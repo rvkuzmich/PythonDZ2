@@ -12,19 +12,10 @@
 Постарайтесь найти самое оптимальное решение.
 """
 n = int(input('Введите число для поиска делителей: '))
-list = []
-if n < 100000: 
-    for i in range(1, int(n/2)+1):
-        if n % i == 0:
-            list.append(i)
-else:
-    for i in range(1, 100001):
-        if n % i == 0:
-            list.append(i)
-    i = 100002
-    while i <= int(n/2):
-        if n % i == 0:
-            list.append(i)
-        i += 2
-list.append(n)
+list = [1, n]
+for i in range(2, int(n**0.5)+1):
+    if n % i == 0:
+        list.append(int(i))
+        list.append(int(n//i))
+list.sort()
 print(list)
